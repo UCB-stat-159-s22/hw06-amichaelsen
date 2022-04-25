@@ -1,12 +1,12 @@
-
+import matplotlib
+matplotlib.use('AGG')
 ## Test utils methods 
 from ligotools.utils import write_wavfile, reqshift, whiten
 from ligotools.utils import plot_SNR_around_event, plot_whitened_data_around_event, plot_ASD_and_template
 import numpy as np
 from os.path import exists
 from os import remove
-import matplotlib
-# matplotlib.use('AGG')
+
 
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
@@ -64,5 +64,7 @@ def test_plot_SNR_around_event():
 	det = 'H1'
 	eventname = "test_event"
 	plottype = 'png' 
-	# plot_SNR_around_event(time, timemax, SNR, pcolor, det, eventname, plottype)
-	assert False, "Need to resolve pyplot figure display in pytest environment"
+	plot_SNR_around_event(time, timemax, SNR, pcolor, det, eventname, plottype, save=False)
+	assert plt.gcf().number > 0
+
+test_plot_SNR_around_event()

@@ -39,7 +39,7 @@ def reqshift(data, fshift=100, sample_rate=4096):
     return z
 
 
-def plot_SNR_around_event(time, timemax, SNR, pcolor, det, eventname, plottype):
+def plot_SNR_around_event(time, timemax, SNR, pcolor, det, eventname, plottype, save=True):
 	# -- Plot the result
 	plt.figure(figsize=(10,8))
 	plt.subplot(2,1,1)
@@ -59,9 +59,10 @@ def plot_SNR_around_event(time, timemax, SNR, pcolor, det, eventname, plottype):
 	plt.grid('on')
 	plt.xlabel('Time since {0:.4f}'.format(timemax))
 	plt.legend(loc='upper left')
-	plt.savefig('figures/'+eventname+"_"+det+"_SNR."+plottype)
+	if save:
+		plt.savefig('figures/'+eventname+"_"+det+"_SNR."+plottype)
 
-def plot_whitened_data_around_event(time, tevent, timemax, strain_whitenbp, pcolor, det, template_match,eventname, plottype):
+def plot_whitened_data_around_event(time, tevent, timemax, strain_whitenbp, pcolor, det, template_match, eventname, plottype):
 	plt.figure(figsize=(10,8))
 	plt.subplot(2,1,1)
 	plt.plot(time-tevent,strain_whitenbp,pcolor,label=det+' whitened h(t)')
