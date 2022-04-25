@@ -1,3 +1,4 @@
 figures/*.png
 audio/*.wav
 data/*.csv
+conf.py
